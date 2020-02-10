@@ -35,7 +35,7 @@ class TodoForm extends Component {
           value={this.state.newItem}
           onChange={this.handleChanges}
         />
-        <button>Add</button>
+        <button>Add Task</button>
       </form>
     );
   }

@@ -20,8 +20,7 @@ class App extends React.Component {
   }  
 
   toggleItem = clickedId => {
-    // no mutating the current state
-    // for every array and every object - create a new one (..., or array methods)
+    
     const newToDoList = this.state.toDoList.map(item => {
       // loop through the array
       // find the item we clicked (id, maybe index)
@@ -52,14 +51,12 @@ class App extends React.Component {
       toDoList: [...this.state.toDoList, newItem]
     });
   };
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+   
   render() {
     return (
       <div>
       <div>
-        <h1>Welcome to Mike's Todo List!</h1>
+        <h1>Mike's Todo List!</h1>
         <TodoForm addNewItem={this.addNewItem} />
       </div>
       <TodoList

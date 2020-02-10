@@ -1,13 +1,71 @@
 import React from 'react';
 
+import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
+
+const toDo =[
+  {
+    task: '',
+    id: '',
+    completed: false
+  }
+];
+
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      toDoList: toDo
+    };
+  }  
+
+  toggleItem = clickedId => {
+    // no mutating the current state
+    // for every array and every object - create a new one (..., or array methods)
+    const newToDoList = this.state.toDoList.map(item => {
+      // loop through the array
+      // find the item we clicked (id, maybe index)
+      // toggle that item's purchased property
+      if (item.id === clickedId) {
+        // toggle purchased
+        return {
+          ...item,
+          completed: !item.completed
+        };
+      } else {
+        return item;
+      }
+    });
+
+    this.setState({
+      toDoList: newToDoList
+    });
+  };
+
+  addNewItem = itemText => {
+    const newItem = {
+      name: itemText,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      toDoList: [...this.state.toDoList, newItem]
+    });
+  };
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
       <div>
-        <h2>Welcome to Mike's Todo App!</h2>
+      <div>
+        <h1>Welcome to Mike's Todo List!</h1>
+        <TodoForm addNewItem={this.addNewItem} />
+      </div>
+      <TodoList
+      toDo={this.state.toDoList}
+      toggleItem={this.toggleItem}
+      />
       </div>
     );
   }

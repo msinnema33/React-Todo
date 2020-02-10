@@ -1,0 +1,20 @@
+.container {
+    background-color: bisque;
+    font-size: 65.7%;
+    margin: 1%;
+    padding: 1%;
+}
+.header {
+    font-size: 3rem;
+}
+
+.todo-list {
+    font-size: 2rem;
+}
+.listItems {
+    font-size: 2rem;
+}
+
+.completed {
+    text-decoration: line-through;
+}
